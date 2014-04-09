@@ -9,7 +9,7 @@ Todo app using Backbone.js, RequireJS, Bootstrap, Yeoman (Grunt + Bower)
 
 For the E2E tests to work you also need to run:
   
-  node_modules/protractor/bin/webdriver-manager update
+    node_modules/protractor/bin/webdriver-manager update
 
 # Run example test #
 Unit test
