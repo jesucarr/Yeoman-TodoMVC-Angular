@@ -1,4 +1,4 @@
-Todo app using Backbone.js, RequireJS, Bootstrap, Yeoman (Grunt + Bower)
+Todo app using AngularJS, Bootstrap, Yeoman (Grunt + Bower)
 
 # Install and run #
 
