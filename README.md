@@ -2,7 +2,7 @@ Todo app using AngularJS, Bootstrap, Yeoman (Grunt + Bower)
 
 # Install and run #
 
-	git clone git@github.com:jesucarr/Yeoman-TodoMVC.git
+	git clone git@github.com:jesucarr/Yeoman-TodoMVC-Angular.git
 	npm install
 	bower install
 	grunt serve
