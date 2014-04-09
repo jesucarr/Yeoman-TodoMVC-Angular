@@ -1,0 +1,62 @@
+<section id="todoapp" ng-controller="TodoCtrl">
+  <div class="row">
+    <header id="header" class="col-md-8 col-md-offset-2">
+      <h1>todos</h1>
+      <form id="todo-form" ng-submit="addTodo()">
+        <input id="new-todo" class="input-block-level" placeholder="What needs to be done?" ng-model="newTodo" autofocus>
+      </form>
+    </header>
+  </div>
+  <div class="row">
+    <section id="main" class="col-xs-12 col-md-8 col-md-offset-2" ng-show="todos.length" ng-cloak>
+      <input id="toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
+      <label for="toggle-all">Mark all as complete</label>
+      <ul id="todo-list">
+        <li ng-repeat="todo in todos | filter:statusFilter track by $index" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
+          <div class="view">
+            <input class="toggle" type="checkbox" ng-model="todo.completed">
+            <label ng-dblclick="editTodo(todo)">{{todo.title}}</label>
+            <button class="destroy close" ng-click="removeTodo(todo)">&times;</button>
+          </div>
+          <form ng-submit="doneEditing(todo)">
+            <input class="edit input-block-level" ng-trim="false" ng-model="todo.title" todo-escape="revertEditing(todo)" ng-blur="doneEditing(todo)" todo-focus="todo == editedTodo">
+          </form>
+        </li>
+      </ul>
+    </section>
+  </div>
+  <div class="row">
+
+    <footer id="footer" class="col-md-8 col-md-offset-2" ng-show="todos.length" ng-cloak>
+      <div class="row">
+        <div class="col-md-4">
+          <span id="todo-count"><strong>{{remainingCount}}</strong>
+            <ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
+          </span>
+        </div>
+        <div class="col-md-4">
+          <ul id="filters">
+            <li>
+              <a ng-class="{selected: status == ''} " href="#/">All</a>
+            </li>
+            <li>
+              <a ng-class="{selected: status == 'active'}" href="#/active">Active</a>
+            </li>
+            <li>
+              <a ng-class="{selected: status == 'completed'}" href="#/completed">Completed</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <button id="clear-completed" ng-click="clearCompletedTodos()" ng-show="completedCount">Clear completed ({{completedCount}})</button>
+        </div>
+      </div>
+    </footer>
+  </div>
+</section>
+<div class="row">
+  <footer id="info" class="col-md-8 col-md-offset-2">
+    <p>Double-click to edit a todo</p>
+    <p>By <a href="http://www.frontendmatters.com">Jesús Carrera</a>, based on <a href="http://todomvc.com">TodoMVC</a></p>
+  </footer>
+</div>
